@@ -1,5 +1,6 @@
 {
-  "extends": ["config:base"],
+  "extends": ["config:base"],`
+  "automerge": false,
   "dependencyDashboard": false,
   "prConcurrentLimit": 5,
   "rangeStrategy": "bump",
