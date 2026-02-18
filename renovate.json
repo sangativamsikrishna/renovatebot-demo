@@ -1,0 +1,8 @@
+{
+  "extends": ["config:base"],
+  "dependencyDashboard": false,
+  "prConcurrentLimit": 5,
+  "rangeStrategy": "bump",
+  "labels": ["dependencies"],
+  "rebaseWhen": "conflicted"
+}
