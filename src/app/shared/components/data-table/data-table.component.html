@@ -1,0 +1,46 @@
+<div class="">
+  <div class="container">
+    <div class="d-flex align-items-center pb-15">
+      <h3>Users List</h3>
+      <button
+        class="ml-auto btn btn-secondary btn-secondary2 btn-sm v-align fw-b px-15"
+      >
+        <i class="material-icons v-align fs-19">add_circle</i> Add New
+      </button>
+    </div>
+    <div class="data-tables-main p-12">
+      <div class="row">
+        <!-- <h1 style="padding-left: 14px;">{{title}}</h1> -->
+        <div class="form-group mb-15 col-sm-6 ml-auto">
+          <input
+            type="search"
+            class="form-control form-control-lg"
+            placeholder="Search.."
+            (keyup)="updateFilter($event)"
+          />
+        </div>
+      </div>
+      <!-- <ngx-datatable class="material" [rows]="rows" headerHeight="38" footerHeight="50"  [scrollbarV]="true">
+                <ngx-datatable-column name="{{column.prop}}" width="auto" *ngFor="let column of columns">
+                    <ng-template let-value="value" ngx-datatable-cell-template height="auto">
+                        <span>{{column.prop}}</span>
+                    </ng-template>
+                </ngx-datatable-column>
+            </ngx-datatable> -->
+      <ngx-datatable
+        #mydatatable
+        class="material fullscreen"
+        headerHeight="50"
+        [rows]="rows"
+        [columns]="columns"
+        [offset]="tableOffset"
+        [columnMode]="'force'"
+        [footerHeight]="50"
+        [limit]="5"
+        [rowHeight]="'auto'"
+        (page)="onChange($event)"
+      >
+      </ngx-datatable>
+    </div>
+  </div>
+</div>

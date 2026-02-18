@@ -1,0 +1,408 @@
+<div class="off-canvas-sidebar">
+    <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top text-white">
+        <div class="container">
+            <div class="navbar-wrapper">
+                <a class="navbar-brand nav-logo d-flex align-items-center justify-content-center" href="javascript:;">
+                    <!-- <img src="{{ logo }}" alt="Clix-logo" style="width: 39px;" /> -->
+                     Sysj
+                </a>
+            </div>
+            <div class="collapse navbar-collapse justify-content-end">
+                <ul class="navbar-nav">
+                    <li class="nav-item ">
+                        <a href="/login" class="nav-link">
+                            <i class="material-icons">fingerprint</i> Login
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="wrapper wrapper-full-page">
+        <div class="page-header login-page header-filter reg-page" filter-color="black" style=" background-size: cover; background-position: top center;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-10 ml-auto mr-auto">
+                        <div class="card card-signup bg-white login-card">
+                            <h2 class="card-title text-center pt-3">Register</h2>
+                            <!-- <div class="d-flex align-items-center justify-content-center pb-4">
+            <img src="{{ logo }}" alt="Clix-logo" /> <strong class="fs-28 pl-2">Clix</strong>
+          </div> -->
+                            <form [formGroup]="signUpForm" class="login-form button-circle pt-3" (keydown)="EnterSubmit($event)">
+                                <!-- <div class="d-flex align-items-center justify-content-center">
+                                    <button class="btn bg-white btn-light-bg btn-round btn-fab mr-1">
+                    <img src="{{githubLogo}}" style="width: 30px;">
+                  </button>
+                                    <button class="btn bg-white btn-light-bg btn-round btn-fab mr-1">
+                    <img src="{{gitLablogo}}" style="width: 30px;">
+                  </button>
+                                    <button class="btn bg-white btn-light-bg btn-round btn-fab mr-1">
+                    <img src="{{bitbucketlogo}}" style="width: 30px;">
+                  </button>
+                                    <button class="btn bg-white btn-light-bg btn-round btn-fab mr-1">
+                    <img src="{{upWorklogo}}" style="width: 30px;">
+                  </button>
+                                    <button class="btn bg-white btn-light-bg btn-round btn-fab mr-1">
+                    <img src="{{emailLogo}}" style="width: 30px;">
+                  </button>
+                                </div> -->
+                                <!-- <span class="font-weight-bold fs-14 p-2 d-block text-center">Or</span> -->
+                                <div class="px-5 pt-3">
+                                    <div class="row">
+                                        <div class="col-sm-4 pb-3">
+                                            <span class="bmd-form-group">
+                        <div [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }">
+                          <div class="input-group">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text">
+                                <i class="material-icons">face</i>
+                              </span>
+                                        </div>
+                                        <input type="text" name="fname" autocomplete="off" formControlName="firstName" id="fname" required appInputHandler class="form-control form-control-lg" placeholder="First name">
+
+                                    </div>
+                                    <div *ngIf="submitted && f.firstName.errors" class="error-message pl-5">
+                                        <div *ngIf="f.firstName.errors.required">
+                                            First name is required.
+                                        </div>
+                                        <div *ngIf="f.firstName.errors.pattern">
+                                            Enter characters only.
+                                        </div>
+                                    </div>
+                                </div>
+                                </span>
+                        </div>
+                        <div class="col-sm-4 pb-3">
+                            <span class="bmd-form-group">
+                        <div [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }">
+                          <div class="input-group">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text">
+                                <i class="material-icons">face</i>
+                              </span>
+                        </div>
+                        <input type="text" name="lname" autocomplete="off" formControlName="lastName" id="lname" required appInputHandler class="form-control form-control-lg" placeholder="Last name">
+                    </div>
+                    <div *ngIf="submitted && f.lastName.errors" class="error-message pl-5">
+                        <div *ngIf="f.lastName.errors.required">
+                            Last name is required.
+                        </div>
+                        <div *ngIf="f.lastName.errors.pattern">
+                            Enter characters only.
+                        </div>
+                    </div>
+                </div>
+                </span>
+            </div>
+            <div class="col-sm-4 pb-3">
+                <span class="bmd-form-group">
+                        <div [ngClass]="{ 'is-invalid': submitted && f.contact.errors }">
+                          <div class="input-group">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text">
+                                <i class="material-icons">smartphone</i>
+                              </span>
+            </div>
+            <input type="text" name="mobileNumber" autocomplete="off" formControlName="contact" id="mobileNumber" maxlength="10" required appInputHandler class="form-control form-control-lg" placeholder="Mobile number" />
+        </div>
+        <div *ngIf="submitted && f.contact.errors" class="error-message pl-5">
+            <div *ngIf="f.contact.errors.required">
+                Mobile number is required.
+            </div>
+            <div *ngIf="f.contact.errors.pattern">
+                Enter only 10 numbers.
+            </div>
+        </div>
+    </div>
+    </span>
+</div>
+<div class="col-sm-4 pb-3">
+    <span class="bmd-form-group">
+                        <div [ngClass]="{ 'is-invalid': submitted && f.orgName.errors }">
+                          <div class="input-group">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text">
+                                <i class="material-icons">corporate_fare</i>
+                              </span>
+</div>
+<input type="text" name="lname" autocomplete="off" formControlName="orgName" id="orgName" required appInputHandler class="form-control form-control-lg" placeholder="Company name" />
+</div>
+<div *ngIf="submitted && f.orgName.errors" class="error-message pl-5">
+    <div *ngIf="f.orgName.errors.required">
+        Company name is required.
+    </div>
+    <div *ngIf="f.orgName.errors.pattern">
+        Alphanumeric and spaces are allowed.
+    </div>
+</div>
+</div>
+</span>
+</div>
+<div class="col-sm-4 pb-3">
+    <span class="bmd-form-group">
+                        <div [ngClass]="{ 'is-invalid': submitted && f.domainName.errors }">
+                          <div class="input-group">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text">
+                                <i class="material-icons">domain</i>
+                              </span>
+</div>
+<input type="text" name="domainName" autocomplete="off" formControlName="domainName" id="domainName" appInputHandler class="form-control form-control-lg" placeholder="Domain name (optional)" />
+<!-- <p class="text-success" *ngIf="domainNotAvailable">https://{{domain_value}}.clix.dev is
+                              available</p>
+                            <p class="text-danger" *ngIf="domainAvailable">https://{{domain_value}}.clix.dev is not
+                              available</p> -->
+</div>
+<div *ngIf="submitted && f.domainName.errors" class="error-message pl-5">
+    <div *ngIf="f.domainName.errors.required">
+        Domain name is required.
+    </div>
+    <div *ngIf="f.domainName.errors.pattern">
+        Only alphanumeric.
+    </div>
+</div>
+</div>
+</span>
+</div>
+<div class="col-sm-4 pb-3">
+    <span class="bmd-form-group">
+                        <div [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+                          <div class="input-group">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text">
+                                <i class="material-icons">email</i>
+                              </span>
+</div>
+<input type="email" name="email" autocomplete="off" formControlName="email" id="church-u-email" required minlength="5" maxlength="50" appInputHandler class="form-control form-control-lg" placeholder="Email" />
+</div>
+<div class="error-message pl-5" *ngIf="submitted && f.email.errors">
+    <div *ngIf="f.email.errors.required">
+        Email must not be empty. Please input email and try again!
+    </div>
+    <div *ngIf="f.email.errors.pattern">Email address is not valid. Email must match "xxx@xxx.x" pattern.
+    </div>
+</div>
+</div>
+</span>
+</div>
+<div class="col-sm-4 pb-3">
+    <span class="bmd-form-group">
+                        <div [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
+                          <div class="input-group">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text">
+                                <i class="material-icons">lock_outline</i>
+                              </span>
+</div>
+<input type="password" name="password" autocomplete="off" id="password" required minlength="5" maxlength="50" appInputHandler formControlName="password" class="form-control pr-4" placeholder="Password" #input [type]="fieldTextType? 'text' : 'password'"
+/>
+<a id="password" class="eye-icon eye-icon_2" href="javascript:void(0)" (click)="input.type = (input.type === 'password') ? 'text' : 'password'">
+    <i [ngClass]="input.type === 'text' ?'fa fa-eye':'fa fa-eye-slash'" aria-hidden="true"></i>
+</a>
+</div>
+<div class="error-message pl-5" *ngIf="submitted && f.password.errors">
+    <div *ngIf="f.password.errors.required">
+        Password must not be empty. Please enter password!
+    </div>
+    <div *ngIf="f.password.errors.pattern">
+        Password must have minimum 8 characters, at least 1 capital, 1 small letter and 1 number.
+    </div>
+</div>
+</div>
+</span>
+</div>
+</div>
+<div class="card-footer justify-content-center text-center pb-4 flex-column">
+    <button type="button" (click)="signup()" class="btn btn-primary ">Create your
+                      account</button>
+    <p class=" text-center text-dark mt-3">
+        Already have an account? <a href="/login/domain">
+            Signin
+                      </a>
+    </p>
+</div>
+
+<!-- <div class="row">
+                <div class="col-sm-9 mx-auto">
+                  <button type="button" class="clix-btn mb-1 clix-btn--primary clix-btn--lg w-100" (click)="signup()">
+                    Create Your Account
+                  </button>
+                  <p class="fs-16 text-center">
+                    Aleady have an account? <a href="javascript:void(0)" (click)="checkDomainToLogin()">
+                      Signin
+                    </a>
+                  </p>
+                </div>
+              </div> -->
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+<div class="login-card login-signup-card" style="display: none;">
+    <img src="{{ logo }}" alt="Clix-logo" />
+    <form [formGroup]="signUpForm" class="login-form">
+        <div class="row">
+            <div class="col-md-5 or-border pb-5">
+                <span class="font-weight-bold fs-14 or-text p-2 bg-white d-block">Or</span>
+                <div [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }">
+                    <div class="custom-input--group mb-3">
+                        <input type="text" name="fname" autocomplete="off" formControlName="firstName" class="custom-input--element" id="fname" required appInputHandler />
+                        <label class="custom-input--label" for="fname">First name</label>
+                    </div>
+                    <div *ngIf="submitted && f.firstName.errors" class="error-message pl-5">
+                        <div *ngIf="f.firstName.errors.required">
+                            First name is required.
+                        </div>
+                        <div *ngIf="f.firstName.errors.pattern">
+                            Enter characters only.
+                        </div>
+                    </div>
+                </div>
+                <div [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }">
+                    <div class="custom-input--group mb-3">
+                        <input type="text" name="lname" autocomplete="off" formControlName="lastName" class="custom-input--element" id="lname" required appInputHandler />
+                        <label class="custom-input--label" for="lname">Last name</label>
+                    </div>
+                    <div *ngIf="submitted && f.lastName.errors" class="error-message pl-5">
+                        <div *ngIf="f.lastName.errors.required">
+                            Last name is required
+                        </div>
+                        <div *ngIf="f.lastName.errors.pattern">
+                            Enter characters only
+                        </div>
+                    </div>
+                </div>
+                <div [ngClass]="{ 'is-invalid': submitted && f.contact.errors }">
+                    <div class="custom-input--group mb-3">
+                        <input type="text" name="mobileNumber" autocomplete="off" formControlName="contact" class="custom-input--element" id="mobileNumber" maxlength="10" required appInputHandler />
+                        <label class="custom-input--label" for="mobileNumber">Mobile number</label>
+                    </div>
+                    <div *ngIf="submitted && f.contact.errors" class="error-message pl-5">
+                        <div *ngIf="f.contact.errors.required">
+                            Mobile number is required
+                        </div>
+                        <div *ngIf="f.contact.errors.pattern">
+                            Enter only 10 numbers.
+                        </div>
+                    </div>
+                </div>
+                <div [ngClass]="{ 'is-invalid': submitted && f.orgName.errors }">
+                    <div class="custom-input--group mb-3">
+                        <input type="text" name="lname" autocomplete="off" formControlName="orgName" class="custom-input--element" id="orgName" required appInputHandler />
+                        <label class="custom-input--label" for="orgName">Organization name</label>
+                    </div>
+
+                    <div *ngIf="submitted && f.orgName.errors" class="error-message pl-5">
+                        <div *ngIf="f.orgName.errors.required">
+                            Company name is required
+                        </div>
+                        <div *ngIf="f.orgName.errors.pattern">
+                            Only alpha numerics
+                        </div>
+                    </div>
+                </div>
+                <div [ngClass]="{ 'is-invalid': submitted && f.domainName.errors }">
+                    <div class="custom-input--group mb-3">
+                        <input type="text" name="domainName" autocomplete="off" formControlName="domainName" class="custom-input--element" id="domainName" appInputHandler />
+                        <label class="custom-input--label" for="domainName">Domain name</label>
+                    </div>
+
+                    <!-- <p class="text-success" *ngIf="domainNotAvailable">https://{{domain_value}}.clix.dev is available</p>
+                <p class="text-danger" *ngIf="domainAvailable">https://{{domain_value}}.clix.dev is not available</p>
+
+                <div *ngIf="submitted && f.domainName.errors" class="error-message pl-5">
+                  <div *ngIf="f.domainName.errors.required">
+                    Domain Name is required
+                  </div>
+                  <div *ngIf="f.domainName.errors.pattern">
+                    Domain Name already exists
+                  </div>
+                </div> -->
+                </div>
+                <div [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+                    <div class="custom-input--group mb-3">
+                        <input type="email" name="email" autocomplete="off" formControlName="email" class="custom-input--element" id="church-u-email" required minlength="5" maxlength="50" appInputHandler />
+                        <label class="custom-input--label" for="church-u-email">Email</label>
+                    </div>
+                    <div class="error-message pl-5" *ngIf="submitted && f.email.errors">
+                        <div *ngIf="f.email.errors.required">
+                            Email must not be empty. Please input email and try again!
+                        </div>
+                        <div *ngIf="f.email.errors.pattern">Email address is not valid. Email must match "xxx@xxx.x" pattern and capital letters are not allowed.
+                        </div>
+                    </div>
+                </div>
+                <div [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
+                    <div class="custom-input--group mb-3">
+                        <input type="password" name="password" autocomplete="off" class="custom-input--element" id="password" required minlength="5" maxlength="50" appInputHandler formControlName="password" />
+                        <label class="custom-input--label" for="password">Password</label>
+                    </div>
+                    <div class="error-message pl-5" *ngIf="submitted && f.password.errors">
+                        <div *ngIf="f.password.errors.required">
+                            Password must not be empty. Please enter password!
+                        </div>
+                        <div *ngIf="f.password.errors.pattern">
+                            Password must have Minimum eight characters, at least one capital letter and one number.
+                        </div>
+                    </div>
+                </div>
+                <button type="button" class="clix-btn clix-btn--primary clix-btn--lg w-100" (click)="signup()">
+                Create your account
+              </button>
+                <p class="fs-16 text-center">
+                    Already have an account? <a routerLink="/login/domain">
+                        signin
+                </a>
+                </p>
+            </div>
+            <div class="col-md-5 offset-md-2">
+                <button class="btn btn-primary btn-primary-outline mb-3 d-block w-100">
+                <div class="d-flex align-items-center">
+                  <span class="d-block bg-white border-right p-2"><img src="{{githubLogo}}" style="width: 42px;"></span>
+                  <span class="p-3 fs-16 d-block text-center">Sign up with github</span>
+                </div>
+              </button>
+                <button class="btn btn-primary btn-primary-outline mb-3 d-block w-100">
+                <div class="d-flex align-items-center">
+                  <span class="d-block bg-white border-right p-2"><img src="{{gitLablogo}}" style="width: 42px;"></span>
+                  <span class="p-3 fs-16 d-block text-center">Sign up with gitlab</span>
+                </div>
+              </button>
+                <button class="btn btn-primary btn-primary-outline mb-3 d-block w-100">
+                <div class="d-flex align-items-center">
+                  <span class="d-block bg-white border-right p-2"><img src="{{bitbucketlogo}}"
+                      style="width: 42px;"></span>
+                  <span class="p-3 fs-16 d-block text-center">Sign up with bitbucket</span>
+                </div>
+              </button>
+                <button class="btn btn-primary btn-primary-outline mb-3 d-block w-100">
+                <div class="d-flex align-items-center">
+                  <span class="d-block bg-white border-right p-2"><img src="{{upWorklogo}}"
+                      style="width: 42px; height: 40px;"></span>
+                  <span class="p-3 fs-16 d-block text-center">Sign up with upwork</span>
+                </div>
+              </button>
+                <button class="btn btn-primary btn-primary-outline mb-3 d-block w-100">
+                <div class="d-flex align-items-center">
+                  <span class="d-block bg-white border-right p-2"><img src="{{emailLogo}}" style="width: 42px;"></span>
+                  <span class="p-3 fs-16 d-block text-center">Sign up with email</span>
+                </div>
+              </button>
+            </div>
+        </div>
+    </form>
+</div>
+</div>
+</div>
+</div>
+<div class="loader-ctrl" *ngIf="!signUpButton">
+    <div class="loader loader-white-bg">
+        <p class="text-center pt-5">Please wait..</p>
+        <svg class="circular" viewBox="25 25 50 50">
+                    <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
+                </svg>
+    </div>
+</div>

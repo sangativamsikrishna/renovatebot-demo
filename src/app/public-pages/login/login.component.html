@@ -1,0 +1,161 @@
+<!-- <div class="off-canvas-sidebar">
+    <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top text-white">
+      <div class="container">
+        <div class="navbar-wrapper">
+          <a class="navbar-brand nav-logo d-flex align-items-center justify-content-center" href="javascript:;">
+            <img src="{{ logo }}" alt="Clix-logo" style="width: 39px;" /> Clix
+          </a>
+        </div>
+        <div class="collapse navbar-collapse justify-content-end">
+          <ul class="navbar-nav">
+            <li class="nav-item ">
+              <a href="javascript:void(0)" (click)="register()" class="nav-link">
+                <i class="material-icons">person_add</i>
+                Register
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="wrapper wrapper-full-page">
+      <div class="page-header login-page header-filter" filter-color="black"
+        style=" background-size: cover; background-position: top center;">
+
+
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-4 col-md-6 col-sm-8 ml-auto mr-auto">
+              <form class="form login-form" [formGroup]="loginForm" (keydown)="EnterSubmit($event)">
+                <div class="card card-login">
+                  <div class="card-header card-header-rose clix-bg-primary text-center">
+
+                    <h4 class="card-title pb-3">Login</h4>
+
+                  </div>
+                  <div class="card-body ">
+                    <p class="card-description text-center"></p>
+                    <span class="bmd-form-group">
+                      <div [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+                        <div class="input-group">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text">
+                              <i class="material-icons">email</i>
+                            </span>
+                          </div>
+                          <input type="email" name="email" autocomplete="off" formControlName="email" id="church-u-email"
+                            required minlength="5" maxlength="50" appInputHandler class="form-control form-control-lg"
+                            placeholder="Email...">
+
+                        </div>
+                        <div class="error-message" *ngIf="submitted && f.email.errors">
+                          <div *ngIf="f.email.errors.required">
+                            Email must not be empty. Please input email and try again!
+                          </div>
+                          <div *ngIf="f.email.errors.pattern">Email address is not valid. Email must match "xxx@xxx.x"
+                            pattern</div>
+                        </div>
+                      </div>
+                    </span>
+                    <span class="bmd-form-group">
+                      <div [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
+                        <div class="input-group">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text">
+                              <i class="material-icons">lock_outline</i>
+                            </span>
+                          </div>
+                          <input type="password" name="password" autocomplete="off" id="password" required
+                            maxlength="50" appInputHandler formControlName="password" class="form-control form-control-lg"
+                            placeholder="Password...">
+                        </div>
+                        <div class="error-message" *ngIf="submitted && f.password.errors">
+                          <div *ngIf="f.password.errors.required">
+                            Password must not be empty. Please enter password!
+                          </div>
+
+                        </div>
+                      </div>
+                    </span>
+                  </div>
+                  <div class="d-flex justify-content-end">
+                    <a href="javascript:void(0)" class="btn btn-rose text-primary btn-link btn-lg py-2 text-lower fs-12"
+                      routerLink="/publicpages/forgotPassword">
+                      Forgot Password
+                    </a>
+                  </div>
+                  <div class="card-footer justify-content-center pb-4">
+                    <button type="button" [disabled]="buttonDisable" id="myBtn" (click)="logIn()" class="py-2 px-3 btn btn-primary btn-lg">Lets
+                      Go</button>
+                    <p class="text-center clearfix" *ngIf="isAzure == 'false'">or</p>
+                    <button type="button" *ngIf="isAzure == 'false'" class="btn btn-primary btn-link btn-lg py-2" (click)="azureMsalLogin()">
+                      Azure Login
+                    </button>
+                  </div>
+                </div>
+              </form>
+              <form class="form login-form login-form2" *ngIf="loginResponse">
+                <div class="card card-login otp-block">
+                  <div class="card-body text-center">
+                    <p class="card-description text-center"></p>
+                    <div class="d-flex text-center align-items-center pb-3 justify-content-center">
+                      <span class="bg-success rounded-circle text-center">
+                        <span class="material-icons text-white d-block">check</span>
+                      </span>
+                      <p class="text-success ml-2 mb-0 font-weight-bold">Successfully Login</p>
+                    </div>
+
+                    <p class="pt-3 pb-2">We’ve sent an OTP to the above Email. Please enter it to complete verification</p>
+                    <span class="bmd-form-group">
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text">
+                            <i class="material-icons">lock_outline</i>
+                          </span>
+                        </div>
+                        <input type="text" name="otp" autocomplete="off" [(ngModel)]="otpvalue" id="otp"
+                        required class="form-control form-control-lg" placeholder="OTP...">
+                      </div>
+                    </span>
+                    <div *ngIf="nootp">
+                      Otp must not be empty. Please input otp and try again!
+                    </div>
+                    <div *ngIf="resend" class="text-right">
+                    <a href="javascript:void(0)"  (click)="resendOtp()">Resend Otp</a>
+                   </div>
+                    <div class="card-footer justify-content-center pb-4">
+                      <button type="button" (click)="otp()" class="py-2 btn btn-primary">Submit</button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="login-wrapper" style="display: none;">
+    <div class="container pos-relative">
+      <ul class="pb-3 list-inline text-right">
+        <li class="nav-item list-inline-item">
+          <a href="javascript:void(0)" (click)="register()" class="nav-link text-white d-flex justify-content-center">
+            <i class="material-icons pr-2 text-white">person_add</i>
+            Register
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="login-card">
+      <img src="{{ logo }}" alt="Clix-logo" />
+      <div class="w-100">
+        <h2 class="text-center">Login</h2>
+
+      </div>
+
+    </div>
+  </div>
+
+   -->
